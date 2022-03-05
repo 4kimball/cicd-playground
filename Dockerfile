@@ -1,11 +1,11 @@
 FROM node:14-alpine as builder
 
-RUN npm install -g serve
-
-RUN mkdir /app
 WORKDIR /app
 
-RUN mkdir ./build
-COPY ./build ./build
+RUN yarn install
+RUN yarn build
 
-ENTRYPOINT ["serve", "-s", "build"]
+COPY ./ ./
+EXPOSE 3000
+
+CMD ["yarn", "start"]
