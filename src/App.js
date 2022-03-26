@@ -1,12 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
 
+import Home from "./routes/Home";
+import Test from "./routes/Test";
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-      <p>docekr, github actions`</p>
-    </div>
+    <Router>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/test" element={<Test />} />
+      </Routes>
+    </Router>
   );
 }
 
