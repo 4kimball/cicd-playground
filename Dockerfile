@@ -10,10 +10,6 @@ RUN yarn install
 COPY . /app
 RUN yarn build
 
-FROM ubuntu:latest
-RUN apt-get update
-RUN apt-get install -y nginx
-
 FROM nginx:latest
 RUN rm -rf /etc/nginx/conf.d
 RUN rm -rf /usr/share/nginx/html/*
