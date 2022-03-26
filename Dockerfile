@@ -1,16 +1,16 @@
 FROM node:14-alpine as builder
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY package.json /app
-COPY package-lock.json /app
+COPY package.json .
+COPY package-lock.json ./
 
-RUN yarn install
+RUN yarn
 
-COPY . /app
+COPY ./ ./
 RUN yarn build
 
 FROM nginx:latest
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
 EXPOSE 80
