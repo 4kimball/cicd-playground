@@ -14,7 +14,7 @@ FROM nginx:latest
 RUN rm -rf /etc/nginx/conf.d
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY nginx /etc/nginx
+COPY nginx/conf.d /etc/nginx
 COPY --from=builder /app/build /usr/share/nginx/html
 
 EXPOSE 80
