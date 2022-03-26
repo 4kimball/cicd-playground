@@ -14,7 +14,6 @@ FROM nginx:latest
 RUN rm -rf /etc/nginx/conf.d
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY --from=builder /app/nginx /etc/nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
